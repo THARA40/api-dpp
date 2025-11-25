@@ -106,11 +106,12 @@ public class SupplierService {
                 .collect(Collectors.toList());
     }
     
-    public Page<SupplierResponse> searchSuppliers(String countryCode,
+    public Page<SupplierResponse> searchSuppliers(Long companyId, String countryCode,
             Boolean active,
             Pageable pageable) {
 
 		SupplierFilter filter = SupplierFilter.builder()
+		.companyId(companyId)
 		.countryCode(countryCode)
 		.active(active)
 		.build();

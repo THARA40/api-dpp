@@ -5,8 +5,8 @@ import lombok.Value;
 
 @Value
 @Builder
-public class SupplierFilter {
+public class SupplierSiteFilter {
     String countryCode;
     Boolean active;
-    Long companyId;
+    Long supplierId;
 }

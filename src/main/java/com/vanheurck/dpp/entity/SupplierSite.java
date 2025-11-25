@@ -1,5 +1,7 @@
 package com.vanheurck.dpp.entity;
 
+import java.time.OffsetDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,6 +38,12 @@ public class SupplierSite {
 
     @Column(name = "is_active")
     private Boolean isActive;
+    
+    @Column(name = "created_at_utc", updatable = false)
+    private OffsetDateTime createdAtUtc;
+
+    @Column(name = "updated_at_utc")
+    private OffsetDateTime updatedAtUtc;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id", insertable = false, updatable = false)

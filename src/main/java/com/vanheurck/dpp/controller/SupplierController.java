@@ -49,7 +49,7 @@ public class SupplierController {
         return supplierService.getByCode(code);
     }
 
-    @GetMapping
+    @GetMapping("/active")
     public List<SupplierResponse> getAllActive() {
         return supplierService.getAllActive();
     }
@@ -74,10 +74,11 @@ public class SupplierController {
     
     @GetMapping
     public Page<SupplierResponse> listSuppliers(
+    		@RequestParam(required = false) Long companyId,
             @RequestParam(required = false) String country,
             @RequestParam(required = false) Boolean active,
             Pageable pageable
     ) {
-        return supplierService.searchSuppliers(country, active, pageable);
+        return supplierService.searchSuppliers(companyId, country, active, pageable);
     }
 }

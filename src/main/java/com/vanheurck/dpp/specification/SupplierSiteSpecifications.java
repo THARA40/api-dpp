@@ -2,13 +2,13 @@ package com.vanheurck.dpp.specification;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import com.vanheurck.dpp.entity.Supplier;
-import com.vanheurck.dpp.filter.SupplierFilter;
+import com.vanheurck.dpp.entity.SupplierSite;
+import com.vanheurck.dpp.filter.SupplierSiteFilter;
 
-public class SupplierSpecifications {
+public class SupplierSiteSpecifications {
 
-    public static Specification<Supplier> build(SupplierFilter filter) {
-        Specification<Supplier> spec = Specification.where(null);
+    public static Specification<SupplierSite> build(SupplierSiteFilter filter) {
+        Specification<SupplierSite> spec = Specification.where(null);
 
         if (filter.getCountryCode() != null && !filter.getCountryCode().isBlank()) {
             spec = spec.and((root, query, cb) ->
@@ -20,9 +20,9 @@ public class SupplierSpecifications {
                     cb.equal(root.get("active"), filter.getActive()));
         }
         
-        if (filter.getCompanyId() != null) {
+        if (filter.getSupplierId() != null) {
             spec = spec.and((root, query, cb) ->
-                    cb.equal(root.get("companyId"), filter.getCompanyId()));
+                    cb.equal(root.get("supplierId"), filter.getSupplierId()));
         }
 
         return spec;
